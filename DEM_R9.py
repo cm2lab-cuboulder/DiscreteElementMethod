@@ -349,4 +349,5 @@ ani = animation.FuncAnimation(
 
 writergif = animation.PillowWriter(fps=30)
 ani.save("./out/Spheres_R7.gif", writer=writergif)
+print(f'file written to out folder')
 plt.show()
