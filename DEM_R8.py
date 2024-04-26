@@ -46,20 +46,6 @@ class Sphere:
         else:
             super().__setattr__(key,value)
     
-    # def __setattr__(self, key, value):
-    #     if key == "gravity":
-    #         object.__setattr__(self, '_gravity', np.array(value, dtype = np.float64))
-    #         self.update_velocity_based_on_gravity()
-    #     else:
-    #         super().__setattr__(key,value)
-            
-    def __setattr__(self, key, value):
-        if key == "gravity":
-            object.__setattr__(self, '_gravity', True)
-            self.update_velocity_based_on_gravity()
-        else:
-            super().__setattr__(key,value)
-    
     def __repr__(self) -> str:
         return self.info
             
@@ -74,18 +60,9 @@ class Sphere:
         
     def update_velocity_based_on_acceleration(self):
         self.velocity += self._acceleration
-        
-    # def update_velocity_based_on_gravity(self):
-    #     self.velocity += self._gravity
-        
-    # def update_velocity_based_on_gravity(self):
-    #     if gravity == True:
-    #         self.velocity += self._gravity
-    #     else:
-    #         self.velocity += self._acceleration
 
-    # def apply_force(self, force):
-    #     self.force += np.array(force)
+    def apply_force(self, force):
+        self.force += np.array(force)
 
     def reset_force(self):
         self.force = np.zeros(3)
@@ -139,6 +116,8 @@ class Sphere:
             
             self.force = ((self.density*other_sphere.density* (self.radius**3)*(other_sphere.radius**3))/(self.density*(self.radius**3)+other_sphere.density*(other_sphere.radius**3))*(overlap/time_step))
             other_sphere.force = (((self.shear_modulus*other_sphere.shear_modulus)/(self.shear_modulus + other_sphere.shear_modulus))*np.sqrt((self.radius*other_sphere.radius)/(self.radius + other_sphere.radius))*(overlap**(3/2)))
+            #self.force += penalty_force_magnitude * direction
+            #other_sphere.force -= penalty_force_magnitude * direction
             
 #METHODS                
 def check_wall_collision_fun(container: Container, sphere: Sphere) -> List[bool]:
@@ -237,7 +216,6 @@ def customize_axes(ax):
 # !-----------------------
     
 def main(spheres, grid_size):
-    gravity = False
     time_step = 0.1
     total_time = 300
     positions = []
@@ -348,5 +326,5 @@ ani = animation.FuncAnimation(
 )
 
 writergif = animation.PillowWriter(fps=30)
-ani.save("Spheres_R9.gif", writer=writergif)
+ani.save("Spheres_R8.gif", writer=writergif)
 plt.show()
