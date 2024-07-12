@@ -2,7 +2,6 @@
 __pycache__/
 local/
 out/
-_ARCHIVE/
 .DS_Store
 Icon
 *.code-workspace
