@@ -212,28 +212,28 @@ def customize_axes(ax):
     
 # !-----------------------
 # FOR RANDOM SPHERE GENERATION
-# def generate_spheres(num_spheres, force_range, position_range, mass, radius, shear_modulus=1.0):
-#     spheres =[]
-#     sphere_colors = list(mcolors.CSS4_COLORS.values())
+def generate_spheres(num_spheres, force_range, position_range, mass, radius, shear_modulus=1.0):
+    spheres =[]
+    sphere_colors = list(mcolors.CSS4_COLORS.values())
 
-#     for i in range(num_spheres):
-#         index = i + 1
-#         color = random.choice(sphere_colors)
-#         force = np.random.uniform(force_range[0], force_range[1], 3)
-#         position = np.random.uniform(position_range[0], position_range[1], 3)
-#         sphere = Sphere(
-#             mass=mass,
-#             radius=radius,
-#             position=position,
-#             force=force,
-#             index=index,
-#             color=color,
-#             shear_modulus=shear_modulus
-#         )
-#         sphere.acceleration = sphere.force / mass
-#         spheres.append(sphere)
+    for i in range(num_spheres):
+        index = i + 1
+        color = random.choice(sphere_colors)
+        force = np.random.uniform(force_range[0], force_range[1], 3)
+        position = np.random.uniform(position_range[0], position_range[1], 3)
+        sphere = Sphere(
+            mass=mass,
+            radius=radius,
+            position=position,
+            force=force,
+            index=index,
+            color=color,
+            shear_modulus=shear_modulus
+        )
+        sphere.acceleration = sphere.force / mass
+        spheres.append(sphere)
         
-#     return spheres
+    return spheres
 # !-----------------------
     
 def main(spheres, grid_size):
@@ -292,24 +292,24 @@ if __name__ == "__main__":
     
     # !---------------------
     # FOR RANDOM SPHERE GENERATION
-    # num_spheres = 300
-    # mass = 1.0
-    # radius = 2
-    # force_range = [-20, 20]
-    # position_range = [-40, 40]
-    # spheres = generate_spheres(num_spheres, force_range, position_range, mass, radius)
+    num_spheres = 600
+    mass = 1.0
+    radius = 2
+    force_range = [-20, 20]
+    position_range = [-40, 40]
+    spheres = generate_spheres(num_spheres, force_range, position_range, mass, radius)
     # !---------------------
 
     sphere1 = Sphere(mass=1, radius=1, position=[-8, 0, 0], index=1, color = "red")
     sphere2 = Sphere(mass=1, radius=3, position=[7, 0, 0], index=2, color = "blue")
     sphere3 = Sphere(mass=1, radius=1, position=[10, 0, 0], index=3, color = "green")
     
-    gravity = [5, 0, 0]
-    sphere1.acceleration = gravity
-    sphere1.shear_modulus = 1.0
-    sphere2.shear_modulus = 1.0
-    sphere3.shear_modulus = 1.0
-    spheres = [sphere1, sphere2, sphere3]
+    # gravity = [5, 0, 0]
+    # sphere1.acceleration = gravity
+    # sphere1.shear_modulus = 1.0
+    # sphere2.shear_modulus = 1.0
+    # sphere3.shear_modulus = 1.0
+    # spheres = [sphere1, sphere2, sphere3]
 
     positions, container = main(spheres, grid_size)
     positions = np.array(positions)
