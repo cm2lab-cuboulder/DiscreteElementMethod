@@ -351,6 +351,5 @@ writergif = animation.PillowWriter(fps=30)
 ani.save("Spheres_R9.gif", writer=writergif)
 plt.show()
 
-
 ## where this code left off: I was attempting to separate acceleration into gravity (in z direction)
 ## and applied forces, so that gravity can be turned on or off as a boolean
